@@ -1,0 +1,8 @@
+.menu-container {
+    background-color: #1E3190;
+    height: 100vh;
+    width: 200px;
+    z-index: 2;
+    position: absolute;
+    left: 0;
+}
