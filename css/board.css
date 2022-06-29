@@ -1,3 +1,8 @@
+body {
+    margin: 0px;
+    font-family: PT Sans;
+}
+
 .menu-container {
     background-color: #1E3190;
     height: 100vh;
@@ -5,4 +10,28 @@
     z-index: 2;
     position: absolute;
     left: 0;
+}
+
+.menu-logo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 135px;
+}
+
+.all-hrefs {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.single-href {
+    color: white;
+    font-size: 1rem;
+    text-decoration: none;
+    width: 100%;
+    margin: 10px 0px;
 }
