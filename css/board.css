@@ -20,6 +20,9 @@ body {
     height: 135px;
 }
 
+
+/* menu points */
+
 .all-hrefs {
     width: 100%;
     display: flex;
@@ -41,4 +44,28 @@ body {
     color: lightgray;
     cursor: pointer;
     margin-left: 60px;
+}
+
+
+/* menu profile pic & profile name */
+
+.profile {
+    position: absolute;
+    width: 100%;
+    bottom: 20px;
+}
+
+.profile-pic-div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    border: 1px solid black;
+    padding: 5px;
 }
