@@ -109,6 +109,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 2;
 }
 
 .all-tables {
@@ -137,4 +138,58 @@ body {
     background-color: white;
     border-radius: 10px;
     margin-right: 20px;
+}
+
+
+/* example for new task */
+
+.new-task {
+    position: relative;
+    z-index: 3;
+    width: 250px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: #f9f5f5;
+    margin: 10px;
+}
+
+.todo-title {
+    font-weight: bold;
+}
+
+.new-task-inner-elements {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.new-task-urgency-color {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 10px;
+    height: 50px;
+    background-color: red;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.draggable-part {
+    min-width: 30px;
+    min-height: 30px;
+    height: auto;
+    background: url(../img/draggable.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0.3em;
+    opacity: 0.1;
+}
+
+.draggable-part img {
+    width: 58px;
+    height: 60px;
+    position: absolute;
+    top: -5px;
+    left: 4px;
 }
