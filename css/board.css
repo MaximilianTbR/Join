@@ -141,6 +141,29 @@ body {
 }
 
 
+/* CSS-Classes of the menu needed for JS */
+
+.single-href-position {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-point {
+    width: 10px;
+    height: 50px;
+    background-color: white;
+    position: absolute;
+    left: 0;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.d-none {
+    display: none;
+}
+
+
 /* example for new task */
 
 .new-task {
@@ -224,27 +247,4 @@ body {
 
 .done-button:hover {
     background-color: gray;
-}
-
-
-/* test */
-
-.single-href-position {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.menu-point {
-    width: 10px;
-    height: 50px;
-    background-color: white;
-    position: absolute;
-    left: 0;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
-
-.d-none {
-    display: none;
 }
