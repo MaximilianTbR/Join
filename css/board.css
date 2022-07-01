@@ -36,7 +36,7 @@ body {
     color: white;
     font-size: 20px;
     text-decoration: none;
-    width: 100%;
+    width: 170px;
     margin: 10px 0px;
     margin-left: 50px;
 }
@@ -151,22 +151,22 @@ body {
     border-radius: 10px;
     background-color: #f9f5f5;
     margin: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .todo-title {
     font-weight: bold;
 }
 
-.new-task-inner-elements {
+.new-task-inner-elements-left {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
 }
 
 .new-task-urgency-color {
-    position: absolute;
-    left: 0;
-    bottom: 0;
     width: 10px;
     height: 50px;
     background-color: red;
@@ -175,6 +175,7 @@ body {
 }
 
 .draggable-part {
+    margin-left: 5px;
     min-width: 30px;
     min-height: 30px;
     height: auto;
@@ -189,7 +190,61 @@ body {
 .draggable-part img {
     width: 58px;
     height: 60px;
+    margin-left: 5px;
+    margin-left: -13px;
+    margin-top: 5px;
+}
+
+.todo-text {
+    margin-top: -2px;
+    margin-left: -11px;
+}
+
+.todo-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.todo-deadline {
+    color: gray;
+}
+
+.done-button {
+    border-radius: 50%;
+    background-color: lightgray;
+    border: none;
+    width: 40px;
+    height: 40px;
+    color: #1E3190;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 6px;
+}
+
+.done-button:hover {
+    background-color: gray;
+}
+
+
+/* test */
+
+.single-href-position {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-point {
+    width: 10px;
+    height: 50px;
+    background-color: white;
     position: absolute;
-    top: -5px;
-    left: 4px;
+    left: 0;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.d-none {
+    display: none;
 }
