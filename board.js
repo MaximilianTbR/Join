@@ -1,9 +1,11 @@
-// Arrays for rendering todos of the four tables
+// Arrays and functions for rendering todos of the four tables
 
 let toDo = [];
 let inProgress = [];
 let testing = [];
 let done = [];
+
+/.../
 
 // Menu functions 
 
@@ -67,4 +69,11 @@ function drop(event) {
     event.preventDefault();
     let data = event.dataTransfer.getData("Text/plain");
     event.target.appendChild(document.getElementById('new-task'));
+}
+
+// delete already done tasks
+
+function markAsDone1() {
+    let currentTask = document.getElementById('new-task');
+    currentTask.remove();
 }
