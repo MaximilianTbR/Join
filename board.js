@@ -1,11 +1,8 @@
 // Arrays and functions for rendering todos of the four tables
 
-let toDo = [];
-let inProgress = [];
-let testing = [];
-let done = [];
+function includeHTML() {
 
-/.../
+}
 
 // Menu functions 
 
