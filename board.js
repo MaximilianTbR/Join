@@ -74,3 +74,60 @@ function markAsDone1() {
     let currentTask = document.getElementById('new-task');
     currentTask.remove();
 }
+
+// render Tasks from server
+
+async function boardInit() {
+    loadedTasks = [];
+    await loadServerData();
+    loadTodos();
+    loadInProgress();
+    loadTesting();
+    loadDone();
+}
+
+function loadTodos() {
+    let tasks = loadedTasks.filter(t => t['state'] == 'to-do');
+    clearBoard('BlockToDo');
+    tasks.forEach(function(task) {
+        document.getElementById('BlockToDo').innerHTML += generateBoardTask(task);
+        hideMoveBtn(task);
+    });
+}
+
+
+function loadInProgress() {
+    let tasks = loadedTasks.filter(t => t['state'] == 'inProgress');
+    clearBoard('BlockInProgress');
+    tasks.forEach(function(task) {
+        document.getElementById('BlockInProgress').innerHTML += generateBoardTask(task);
+        hideMoveBtn(task);
+    });
+}
+
+function loadTesting() {
+    let tasks = loadedTasks.filter(t => t['state'] == 'testing');
+    clearBoard('BlockTesting');
+    tasks.forEach(function(task) {
+        document.getElementById('BlockTesting').innerHTML += generateBoardTask(task);
+        hideMoveBtn(task);
+    });
+}
+
+function loadDone() {
+    let tasks = loadedTasks.filter(t => t['state'] == 'done');
+    clearBoard('BlockDone');
+    tasks.forEach(function(task) {
+        document.getElementById('BlockDone').innerHTML += generateBoardTask(task);
+        hideMoveBtn(task);
+    });
+}
+
+async function loadServerData() {
+    helper = new Helper;
+    setURL('http://gruppe-142.developerakademie.net/smallest_backend_ever');
+    await helper.getDataFromServer();
+    helper.allTasks.forEach(task => {
+        loadedTasks.push(task);
+    });
+}

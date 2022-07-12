@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            margin: 0px;
+            font-family: PT Sans;
+        }
+        
+        .menu-container {
+            background-color: #1E3190;
+            height: 100vh;
+            width: 15%;
+            z-index: 2;
+            position: absolute;
+            left: 0;
+        }
+        
+        .menu-logo {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 135px;
+        }
+        /* menu points */
+        
+        .all-hrefs {
+            width: 100%;
+            height: 45vh;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        .single-href {
+            color: white;
+            font-size: 16px;
+            text-decoration: none;
+            width: 100%;
+            margin: 10px 0px;
+            margin-left: 50px;
+        }
+        
+        .single-href:hover {
+            color: lightgray;
+            cursor: pointer;
+            margin-left: 60px;
+        }
+        /* menu profile pic & profile name */
+        
+        .profile {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 50px;
+        }
+        
+        .profile-pic-div {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column
+        }
+        
+        .profile-pic-div img {
+            border: 3px solid rgb(0, 0, 0);
+            padding: 1px;
+            background-color: white;
+            height: 50px;
+            width: 50px;
+            border-radius: 32px;
+            object-fit: cover;
+            object-position: -12px 1px;
+        }
+        
+        .username {
+            font-size: 20px;
+            color: white;
+            margin-top: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .log-out {
+            color: white;
+            opacity: 0.5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .log-out:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        
+        .div {
+            display: flex;
+        }
+        
+        .no {
+            width: 78%;
+        }
+        
+        .box {
+            background-color: rgb(244, 242, 251);
+            display: flex;
+            justify-content: space-between;
+            padding: 12px;
+            border-radius: 10px;
+        }
+        
+        .contentContainer {
+            width: 17%;
+        }
+        
+        .p {
+            font-size: 12px;
+            color: blue;
+            margin-bottom: 40px;
+        }
+        
+        .addTask {
+            font-size: 22px;
+            font-weight: bolder;
+            margin-block-end: 0px;
+        }
+        
+        .category {
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-right: 55px;
+            padding-left: 10px;
+        }
+        
+        .title {
+            color: blue;
+            font-weight: bold;
+        }
+        
+        .icon {
+            width: 20px;
+            height: 20px;
+            display: flex;
+        }
+        
+        .urgency {
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-right: 107px;
+            padding-left: 10px;
+        }
+        
+        #input {
+            padding: 7px;
+        }
+        
+        .red {
+            background-color: red;
+        }
+    </style>
+
+    <script>
+        function createTask() {
+            let title = document.getElementById('title').value;
+
+            let description = document.getElementById('description');
+            description.innerHTML += template();
+            let categorie = document.getElementById('categorieArt').value;
+            let dueDate = document.getElementById('dueDate').value;
+            let urgency = document.getElementById('urgensy').value;
+            let icon = document.getElementById('icon').src;
+        }
+
+        let tasks = {
+            'title': title,
+            'description': description,
+            'categorieArt': categorieArt,
+            'dueDate': dueDate,
+            'urgensy': urgency,
+            'icon': icon,
+            'createdAt': new Date().getTime()
+        }
+
+        function template() {
+            return `   <div id="tasks">
+                <p id="assignedTo"></p>
+                <p id="category"></p>
+                <p id="details"></p>
+            </div>`;
+        }
+    </script>
+</head>
+
+<body>
+    <div class="div">
+        <div class="contentContainer">
+            <div class="menu-container">
+                <div class="menu-logo">
+                    <img src="img/logo.png">
+                </div>
+                <div class="all-hrefs">
+                    <a class="single-href" id="board-menu-point" href="">Board</a>
+                    <a class="single-href" id="backlog-menu-point" href="">Backlog</a>
+                    <a class="single-href" id="addtask-menu-point" href="">Add Task</a>
+                    <a class="single-href" id="help-menu-point" href="">Help</a>
+                </div>
+                <div class="profile">
+                    <div class="profile-pic-div">
+                        <img class="profile-pic" src="img/profile_tijana.jpg">
+                    </div>
+                    <div id="username" class="username">
+
+                    </div>
+                </div>
+                <div onclick="logOut()" class="log-out">
+                    Ausloggen
+                </div>
+            </div>
+            <div class="all-tables">
+                <div class="single-table"></div>
+            </div>
+        </div>
+
+        <div class="no">
+            <div>
+                <p class="addTask">Add Task</p>
+                <p class="p">Learning Management System Project</p>
+
+                <div class="box">
+                    <div class="box-input">
+                        <div>
+                            <p class="title">TITLE</p>
+                            <input id="input">
+                        </div>
+                        <div>
+                            <p class="title">CATEGORY</p>
+
+                            <select class="category" id="categoryArt" placeholder="Kategorie">
+                                 <option>Marketing</option>
+                                 <option>Development</option>
+                                 <option>Design</option>
+                            </select>
+                        </div>
+                        <div>
+                            <p class="title">DESCRIPTION</p>
+                            <input id="input">
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <p class="title">DUE DATE</p>
+                            <div class="div">
+                                <input id="input">
+                                <button><img class="icon" src="img/icons8-calendar-150.png"></button>
+                            </div>
+
+                        </div>
+                        <div>
+                            <p class="title">URGENCY</p>
+                            <select class="urgency" id="urgency" placeholder="Kategorie">
+                                <option class="red">High</option>
+                                <option>Mild</option>
+                                <option>Low</option>
+                           </select>
+
+                        </div>
+                        <div>
+                            <p class="title">ASSIGNED TO</p>
+                            <div class="profile">
+                                <div class="profile-pic-div">
+                                    <img class="profile-pic" src="img/profile_tijana.jpg">
+                                </div>
+
+                                <img id="icon" src="img/icon plus.png">
+                                <button>CANCEL</button>
+                                <button>CREATE TASK</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>

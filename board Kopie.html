@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join</title>
+    <link rel="stylesheet" href="css/board.css">
+    <script src="board.js"></script>
+
+    <!-- Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;1,400;1,700&display=swap" rel="stylesheet">
+
+       <!-- templates Menü-->
+       <link rel="stylesheet" href="css/menu.css">
+</head>
+
+<body onload="render()">
+
+    <!-- ----------------Templates html menü -------------  -->
+    <div w3-include-html="templates/menu.html"></div>
+
+    <div class="main-div">
+        <div class="all-tables">
+            <div class="whole-table-position">
+                <h3 class="headline">TO DO</h3>
+                <div class="single-table" id="todo-table" ondrop="drop(event)" ondragenter="dragEnter(event)" ondragleave="dragLeave(event)" ondragover="allowDrop(event)">
+                    <div class="new-task" draggable="true" id="new-task">
+                        <div class="new-task-inner-elements-left">
+                            <div class="new-task-urgency-color" id="new-task-urgency-color"></div>
+                            <div class="draggable-part" id="draggable-part">
+                                <img src="img/draggable Kopie 3.png">
+                            </div>
+                            <div class="todo-text">
+                                <div class="todo-title" id="todo-title">
+                                    Test
+                                </div>
+                                <div class="todo-deadline" id="todo-deadline">
+                                    07.08.2027
+                                </div>
+                            </div>
+                        </div>
+                        <div class="new-task-inner-elements-right">
+                            <div class="done-button" onclick="markAsDone1()">__</div>
+                        </div>
+                    </div>
+                    <div class="new-task" draggable="true" id="new-task">
+                        <div class="new-task-inner-elements-left">
+                            <div class="new-task-urgency-color" id="new-task-urgency-color"></div>
+                            <div class="draggable-part" id="draggable-part">
+                                <img src="img/draggable Kopie 3.png">
+                            </div>
+                            <div class="todo-text">
+                                <div class="todo-title" id="todo-title">
+                                    Test
+                                </div>
+                                <div class="todo-deadline" id="todo-deadline">
+                                    07.08.2027
+                                </div>
+                            </div>
+                        </div>
+                        <div class="new-task-inner-elements-right">
+                            <div class="done-button" onclick="markAsDone()">__</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="whole-table-position">
+                <h3 class="headline">IN PROGRESS</h3>
+                <div class="single-table" id="inprogress-table" ondrop="drop(event)" ondragenter="dragEnter(event)" ondragleave="dragLeave(event)" ondragover="allowDrop(event)"></div>
+            </div>
+            <div class="whole-table-position">
+                <h3 class="headline">TESTING</h3>
+                <div class="single-table" id="testing-table" ondrop="drop(event)" ondragenter="dragEnter(event)" ondragleave="dragLeave(event)" ondragover="allowDrop(event)"></div>
+            </div>
+            <div class="whole-table-position">
+                <h3 class="headline">DONE</h3>
+                <div class="single-table" id="done-table" ondrop="drop(event)" ondragenter="dragEnter(event)" ondragleave="dragLeave(event)" ondragover="allowDrop(event)"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
