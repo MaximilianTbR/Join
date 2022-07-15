@@ -9,7 +9,7 @@ async function render() {
 }
 
 
-function showBacklog() {
+function showBoard() {
     let taskList = document.getElementById('tasks');
     taskList.innerHTML = '';
     for (let i = 0; i < tasks.length; i++) {
