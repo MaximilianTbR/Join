@@ -19,13 +19,7 @@ async function init() {
 }
 
 
-<<<<<<< HEAD
-function showBoard() {
-=======
 function showBacklog() {
-
-
->>>>>>> c40031395634b5f9cfd743b6b838747f5b14d9d3
     let taskList = document.getElementById('tasks');
     taskList.innerHTML = '';
     for (let i = 0; i < tasks.length; i++) {
