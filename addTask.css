@@ -1,0 +1,181 @@
+/* :root {
+ 
+} */
+
+
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.addtaskTitel {
+    margin-right: 35%;
+}
+
+.inputContain {
+ 
+    display: flex;
+    justify-content:space-around ;
+    height: 70vh;
+    width: 90vw;
+    background-color: rgb(242, 239, 248);
+    border-radius: 10px;
+    flex-wrap: wrap;
+}
+
+
+.center{
+    display: flex;
+    justify-content: center;
+    margin-left: 10%;
+}
+
+
+.inputStyle {
+    outline: none;
+    width: 25.9vw;
+    height: 6vh;
+    color: #808184;
+    border-radius: 5px;
+    box-shadow: 3px 3px #ccc;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    font-weight: bolder;
+    font-size: 20px;
+    padding: 0 10px 0 5px;
+
+}
+
+.inputDescriptionField {
+    width: 25.4vw;
+    height: 20vh;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 3px 3px #ccc;
+    color: #808184;
+    font-size: 20px;
+
+}
+
+::placeholder {
+    font-weight: bolder;
+    font-size: 22px;
+    padding: 0 10px 0 5px;
+    color: #808184;
+}
+
+
+p {
+    color: #1E3190;
+    font-weight: bold;
+    font-size: 24px;
+    margin: 14% 0 8px 0;
+}
+
+.avatar {
+    border-radius: 50%;
+    width: 63px;
+    height: 63px;
+    cursor: pointer;
+ 
+}
+
+.avartarPicker {
+    display: flex;
+}
+
+.avarta-selected{
+    opacity: 1;
+
+}
+
+
+button {
+    outline: none;
+    border: 1px solid rgb(134, 133, 133);
+    width: 12vw;
+    height: 6vh;
+    border-radius: 5px;
+    font-size: 18px;
+    background-color: white;
+    cursor: pointer;
+    box-shadow: 3px 3px #ccc;
+    color: #1E3190;
+}
+
+.buttonStayl {
+    font-weight: bolder;
+}
+
+.buttonContain {
+    margin: 30px 8px 0 0;
+
+}
+
+button:hover {
+    background-color: #1E3190;
+    color: #ccc;
+}
+
+
+.userNames {
+    color: #1E3190;
+    font-size: 12px;
+    margin: 2px;
+    cursor: pointer;
+}
+
+.userContain {
+    width: 90px;
+    height: 90px;
+    opacity: 0.4;
+}
+
+
+.avarta-selected{
+    opacity: 1;
+   
+
+}
+
+
+
+/* '-----------------New Task-------JS --------------' */
+
+.taskCreated {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 500px;
+    height: 200px;
+    border-radius: 5px;
+    background-color: rgb(242, 239, 248);;
+    box-shadow: 3px 3px #ccc;
+    position: absolute;
+    top: 30%;
+    left: 40%;
+    cursor: pointer;
+
+}
+
+
+.taskCreated button{
+margin: 10% 0 0 0;
+
+
+}
+
+.d-none{
+    display: none;
+}

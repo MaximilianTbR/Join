@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 
@@ -299,4 +300,113 @@
 
 </body>
 
+=======
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join</title>
+    <link rel="stylesheet" href="addTask.css">
+    <script src="addTask.js"></script>
+    <script src=“./mini_backend.js”></script>
+
+</head>
+
+<body onload="render()">
+
+    
+    <!-- ----------------Templates html menü -------------  -->
+
+    <div w3-include-html="templates/menu.html"></div>
+
+
+    <div id="taskCreated" class="taskCreated d-none">
+
+
+        <div>
+            <p>Task Created</p>
+            <button classe="taskCreatedButton" onclick="backNewTask()">New Task</button>
+        </div>
+
+    </div>
+
+
+
+
+    <!-- 'Titel' -->
+   
+
+        <div class="addtaskTitel" style="color: rgb(54, 54, 54);">
+            <h1>Add Task</h1>
+            <h2 style="color:#1E3190;"> Learning Management System Project</h2>
+        </div>
+
+
+        <!-- Board -->
+
+    <div id="closed"  >
+            <div class="center">
+                <form id="inputContain " onsubmit="createNewTask(); return false " class="inputContain">
+                    <div class="inputBox">
+                        <div>
+                            <p>TITEL</p>
+                            <input id="inputTitel" name="text" style="width: 24.5vw !important;" class="inputStyle" required type="text"
+                                placeholder="Management meeting preparation"></input>
+                        </div>
+                        <div>
+                            <p>CATEGORY</p>
+                            <select class="inputStyle" name="text" id="inputCategory" required>
+                                <option value="" disabled selected hidden>Managemant</option>
+                                <option value="low">Board</option>
+                                <option value="low">Backlog</option>
+                                <option value="low">Add Task</option>
+                                <option value="low">Help</option>
+                        </select>
+                    </div>
+                    <div>
+                        <p>DESCRIPTION</p>
+                        <textarea class="inputDescriptionField" name="text" id="inputDescription" cols="34" rows="10"
+                        required placeholder="Note"></textarea>
+                </div>
+            </div>
+
+            <div>
+                <div>
+                    <p>DUE DATE</p>
+                    <input id="inputDate" style="width:24.5vw !important;" name="date" class="inputStyle" required type="date">
+                </div>
+                <div>
+                    <p>URGENCY</p>
+                    <select class="inputStyle"  id="inputUrgency" name="text" placeholder="Urgency" required>
+                        <option value="" disabled selected hidden>Please select </option>
+                        <option value="low">Low</option>
+                        <option value="low">Medium</option>
+                        <option value="low">Important</option>
+                        <option value="low">High</option>
+                    </select>
+                </div>
+                <div>
+                    <p>ASSIGNED TO</p>
+                    <div class="avartarPicker" id="avartarPicker"></div>
+                </div>
+                <div class="buttonContain">
+                    <button class="buttonStayl" name="" type="reset" onclick="clearAllInputFolder()">Cancel</button>
+                    <button  class="buttonStayl" type="submit">Create Task</button>
+
+
+
+                </div>
+
+            </form>
+    </div>
+
+
+
+
+</body>
+
+>>>>>>> 53ed531b108f6077ac15b54d4bffb81ce1d28ed9
 </html>
