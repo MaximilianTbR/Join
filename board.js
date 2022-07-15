@@ -1,3 +1,7 @@
+'use strict';
+
+setURL('https://gruppe-271.developerakademie.net/smallest_backend_ever/database.json');
+
 // Arrays and functions for rendering todos of the four tables
 
 function includeHTML() {
@@ -77,57 +81,77 @@ function markAsDone1() {
 
 // render Tasks from server
 
-async function boardInit() {
-    loadedTasks = [];
-    await loadServerData();
-    loadTodos();
-    loadInProgress();
-    loadTesting();
-    loadDone();
-}
-
-function loadTodos() {
-    let tasks = loadedTasks.filter(t => t['state'] == 'to-do');
-    clearBoard('BlockToDo');
-    tasks.forEach(function(task) {
-        document.getElementById('BlockToDo').innerHTML += generateBoardTask(task);
-        hideMoveBtn(task);
-    });
+async function render() {
+    includeHTML();
+    await downloadFromServer();
+    await loadFromBackend();
+    selectNavElement();
+    showBacklog();
 }
 
 
-function loadInProgress() {
-    let tasks = loadedTasks.filter(t => t['state'] == 'inProgress');
-    clearBoard('BlockInProgress');
-    tasks.forEach(function(task) {
-        document.getElementById('BlockInProgress').innerHTML += generateBoardTask(task);
-        hideMoveBtn(task);
-    });
+function showBoard() {
+    let tasksBoard = document.getElementById('tasks');
+    tasksBoard.innerHTML = '';
+    for (let i = 0; i < tasks.length; i++) {
+        if (tasks[i].processing_state == 'unallocated') { //
+            tasksBoard.innerHTML += templateBoard(i);
+        }
+    }
 }
 
-function loadTesting() {
-    let tasks = loadedTasks.filter(t => t['state'] == 'testing');
-    clearBoard('BlockTesting');
-    tasks.forEach(function(task) {
-        document.getElementById('BlockTesting').innerHTML += generateBoardTask(task);
-        hideMoveBtn(task);
-    });
+function templateBoard(i) {
+    return `
+ <div class="backlogTasks ${tasks[i]['inputCategory']}" id="backlogTasks-${i}" onclick="openTask(${i}, 'backlog')">
+    <div class="backlogAssigned">//bearbeiten und vergleichen mit Add Task
+        <span class="p">ASSIGNED TO:</span>
+        <div class="avatarPerson">
+            <img class="img" src="../img/${tasks[i]['avatarPicker']}.jfif" alt="">
+            <div class="avatarPersonName">
+                <span>${tasks[i]['avatarPicker']}</span>
+                <span style="color: #6f8bf3f7">${tasks[i]['avatarPicker']}@join.com</span>
+            </div>
+        </div>
+    </div>
+    <div class="backlogCategory">
+        <span class="p">CATEGORY:</span>
+        <span>${tasks[i]['inputCategory']}</span>
+    </div>
+    <div class="backlogDescription">
+        <span class="p">DESCRIPTION:</span>
+        <span>${tasks[i]['inputDescription']}</span>
+    </div>
+ </div>
+ <div class="new-task" draggable="true" id="new-task-"${i}">
+                        <div class="new-task-inner-elements-left">
+                            <div class="new-task-urgency-color" id="new-task-urgency-color-${tasks[i][urgency-color]}"></div>
+                            <div class="draggable-part" id="draggable-part-${i}">
+                                <img src="img/draggable Kopie 3.png">
+                            </div>
+                            <div class="todo-text">
+                                <div class="todo-title" id="todo-title-${i}">
+                                    s
+                                </div>
+                                <div class="todo-deadline" id="todo-deadline-"${tasks[i]}">
+                                    07.08.2027
+                                </div>
+                            </div>
+                        </div>
+                        <div class="new-task-inner-elements-right">
+                            <div class="done-button" onclick="markAsDone1()">__</div>
+                        </div>
+                    </div>`;
 }
 
-function loadDone() {
-    let tasks = loadedTasks.filter(t => t['state'] == 'done');
-    clearBoard('BlockDone');
-    tasks.forEach(function(task) {
-        document.getElementById('BlockDone').innerHTML += generateBoardTask(task);
-        hideMoveBtn(task);
-    });
+
+function addToBord(i) { //
+    tasks[i].processing_state = 'todo';
+    closeDialog('dialog-bg-backlog'); //überprüfen
+    await updateBacklog();
 }
 
-async function loadServerData() {
-    helper = new Helper;
-    setURL('http://gruppe-142.developerakademie.net/smallest_backend_ever');
-    await helper.getDataFromServer();
-    helper.allTasks.forEach(task => {
-        loadedTasks.push(task);
-    });
+
+async function updateBacklog() {
+    showBacklog();
+    await saveToBackend();
 }
