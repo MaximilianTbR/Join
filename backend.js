@@ -7,27 +7,23 @@ async function init() {
     includeHTML();
     await downloadFromServer();
     await loadFromBackend();
+    selectNavElement();
     showBacklog();
 }
 
 async function saveToBackend() {
     let usersAsJSON = JSON.stringify(users);
     let tasksAsJSON = JSON.stringify(tasks);
-    await backend.setItem('saveUser', usersAsJSON);
-    await backend.setItem('saveTask', tasksAsJSON);
+    await backend.setItem('users', usersAsJSON);
+    await backend.setItem('tasks', tasksAsJSON);
 }
 
 
 async function loadFromBackend() {
-    let usersAsJSON = await backend.getItem('saveUser');
-    let tasksAsJSON = await backend.getItem('saveTask');
-
+    let usersAsJSON = await backend.getItem('users');
+    let tasksAsJSON = await backend.getItem('tasks');
     users = JSON.parse(usersAsJSON) || [];
     tasks = JSON.parse(tasksAsJSON) || [];
-    console.log('Loaded', users);
-    console.log('Loaded', tasks);
-
-
 }
 
 
@@ -118,47 +114,47 @@ async function changeTask(i, page) {
 function templateMoveTo(i, page) {
     return `
     
-    <div class="dialogAllBacklog" id="${page}-item-${i}">
-        <img src="./img/x-mark-4-32.png"class="xICon" onclick="closeDialog('dialog-bg-${page}')">Close</img>
+    <div class="dialog-task" id="${page}-item-${i}">
+        <i class="fa-solid fa-xmark" aria-label="Close" onclick="closeDialog('dialog-bg-${page}')"></i>
         <div class"icon-menu">
-            <button class="move circle-plus"  id="move-to-board-icon" onclick="move(${i}, '${page}')">Move to Board</button>
-          <!-- <button class="move circle-minus" id="move-to-backlog-icon" onclick="move(${i}, '${page}')">Remove from Board</button>
-            <button class="move square"  onclick="editTask(${i}, '${page}')">Edit Task</button> -->
-            <button class="move trash-can" onclick="deleteTask(${i}, '${page}')">Delete Task</button>
+            <button class="move circle-plus" aria-label="Move to Board" title="Move to Board" id="move-to-board-icon" onclick="move(${i}, '${page}')"></button>
+            <button class="move circle-minus" aria-label="Remove from Board" title="Remove from Board" id="move-to-backlog-icon" onclick="move(${i}, '${page}')"></button>
+            <button class="move square" aria-label="Edit Task" title="Edit Task" onclick="editTask(${i}, '${page}')"></button>
+            <button class="move trash-can" aria-label="Delete Task" title="Delete Task" onclick="deleteTask(${i}, '${page}')"></button>
         </div>
         <div class="task-header">
-            <div class="column-dialog">
-                <span class="title">Title</span>
-                <p class="titleText">${tasks[i]['Titel']}</p>
+            <div>
+                <span class="task-title form-label">TITLE</span>
+                <p class="task-title">${tasks[i].title}</p>
             </div>
-            <div class="column-dialog">
-                <span class="categoryPadding">Assigned to:</span>
+            <div>
+                <span class="form-label">ASSIGNED TO</span>
                 <div class="assigned-to">
-                    <img class="rounded-circle profile-picture" src="../imgs/pp_${users[i]['img']}".jfif" alt="">
+                    <img class="rounded-circle profile-picture" src="../imgs/pp_${tasks[i].assigned_to}.jfif" alt="">
                     <div class="person-name">
-                        <span>${users[i]['name']}</span>
-
+                        <span>${tasks[i].assigned_to}</span>
+                        <span style="color: #6f8bf3f7">${tasks[i].assigned_to}@join.com</span>
                     </div>
                 </div>
             </div>
         </div>
         <div class="task-settings">
-            <div class="column-dialog">
-                <span class="categoryPadding" >Category:</span>
-                <p class="categoryID">${tasks[i]['Category']}</p>
+            <div>
+                <span class="form-label">CATEGORY</span>
+                <p>${tasks[i].category}</p>
             </div>
-            <div class="column-dialog">
-                <span class="categoryPadding">Urgency:</span>
-                <p class="urgencyID">${tasks[i]['Urgency']}</p>
+            <div>
+                <span class="form-label">URGENCY</span>
+                <p>${tasks[i].urgency}</p>
             </div>
-            <div class="column-dialog">
-                <span class="categoryPadding">Due Date:</span>
-                <p class="urgencyID">${tasks[i]['Date']}</ü>
+            <div>
+                <span class="form-label">DUE DATE</span>
+                <p class="task-date">${tasks[i].due_date}</ü>
             </div>
         </div>
-        <div class="column-dialog">
-            <span class="categoryPadding">Description:</span>
-            <p class="description">${tasks[i]['Description']}</p>
+        <div class="task-description">
+            <span class="form-label">DESCRIPTION</span>
+            <p class="description">${tasks[i].description}</p>
         </div>
     </div>
     `;
