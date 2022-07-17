@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menü</title>
+    <link rel="stylesheet" href="menu.css">
+    <script src="menu.js"></script>
+</head>
+
+<body>
+
+
+    <div class="menu-container">
+        <div class="menu-logo">
+            <img src="img/logo.png">
+        </div>
+        <div class="all-hrefs">
+            <a class="single-href" id="board-menu-point" href="../board.html">Board</a>
+            <a class="single-href" id="backlog-menu-point" href="../backlog.html">Backlog</a>
+            <a class="single-href" id="addtask-menu-point" href="../addTask.html">Add Task</a>
+            <a class="single-href" id="help-menu-point" href="../">Help</a>
+        </div>
+        <div class="profile-menu">
+            <div class="profile">
+                <div class="profile-pic-div">
+                    <img class="profile-pic" src="img/profile-pic.png">
+                </div>
+                <div id="username" class="username">
+                </div>
+            </div>
+            <div>
+                <div onclick="logOut()" class="log-out">
+                    Ausloggen
+                </div>
+                <div onclick="openMenu()">
+                    <img onclick="openMenu()" src="img/menu-button.png" class="menu-button-img">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="menu" class="d-none">
+        <div class="open-menu">
+            <div class="open-menu-div">
+                <div class="menu-logo">
+                    <img src="img/logo.png" class="open-menu-logo">
+                </div>
+                <div>
+                    <img class="open-menu-profilepic" src="img/profile-pic.png">
+                    <img onclick="closeMenu()" src="img/menu-button-close.png" class="open-menu-close-button">
+                </div>
+            </div>
+            <div class="open-menu-hrefs">
+                <a class="single-href-open-menu" id="board-menu-point-open-menu" href="../board.html">Board</a>
+                <a class="single-href-open-menu" id="backlog-menu-point-open-menu" href="../backlog.html">Backlog</a>
+                <a class="single-href-open-menu" id="addtask-menu-point-open-menu" href="../addTask.html">Add Task</a>
+                <a class="single-href-open-menu" id="help-menu-point-open-menu" href="../">Help</a>
+                <div onclick="logOut()" class="log-out-open-menu">
+                    Ausloggen
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>
