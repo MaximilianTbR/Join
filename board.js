@@ -1,4 +1,16 @@
+/**
+ * sets url for loading everything from the backend
+ * 
+ * no params
+ */
+
 setURL('https://gruppe-271.developerakademie.net/smallest_backend_ever');
+
+/**
+ * function to load everything from the backend and to initialize rendering process and to add white border next to the href of the currently viewed border for better user experience
+ * 
+ * no params
+ */
 
 async function init() {
     await downloadFromServer();
@@ -9,6 +21,13 @@ async function init() {
     updateHTML2();
 }
 
+
+/**
+ * Function to render tasks after having loaded them from the backend
+ * 
+ * no params
+ */
+
 function showBoard() {
     console.log('everything works until showBoard()');
     let tasksBoard = document.getElementById('todo');
@@ -17,6 +36,13 @@ function showBoard() {
         tasksBoard.innerHTML += templateBoard(i);
     }
 }
+
+
+/**
+ * template for single task
+ * 
+ * @param {number}
+ */
 
 function templateBoard(i) {
     return `  
@@ -52,7 +78,12 @@ function templateBoard(i) {
 `;
 }
 
-// drag & drop
+
+/**
+ * Functions for drag and drop process
+ * 
+ * @params {number} && {id of certain task} && {event to use preventDefault(); property}
+ */
 
 let currentDraggedElement;
 
@@ -74,7 +105,11 @@ function MoveTo(processingState) {
     updateHTML2();
 }
 
-// test
+/**
+ * Function update HTML after having dragged certain task to another table
+ * 
+ * no params
+ */
 
 function updateHTML2() {
 
@@ -92,7 +127,12 @@ function updateHTML2() {
     }
 }
 
-// Adjusts colors for each task
+
+/**
+ * adjusts colors for the left border of every single task
+ * 
+ * @param {number}
+ */
 
 function adjustColors(i) {
     let element = tasks[i]['processing_state'];
@@ -111,14 +151,24 @@ function adjustColors(i) {
     }
 }
 
-// delete already done tasks
+
+/**
+ * deletes already done functions
+ * 
+ * @param {number}
+ */
 
 function markAsDone(i) {
     let currentTask = document.getElementById(i);
     currentTask.remove();
 }
 
-// includeHTML() Function
+
+/**
+ * includeHTML Function
+ * 
+ * no params
+ */
 
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
