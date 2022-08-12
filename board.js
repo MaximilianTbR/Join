@@ -1,16 +1,17 @@
-'use strict';
-
-setURL('https://gruppe-271.developerakademie.net/smallest_backend_ever/database.json');
+setURL('https://gruppe-271.developerakademie.net/smallest_backend_ever');
 
 async function init() {
-    includeHTML();
     await downloadFromServer();
     await loadFromBackend();
+    await includeHTML();
+    menuInit();
     showBoard();
+    updateHTML2();
 }
 
 function showBoard() {
-    let tasksBoard = document.getElementById('todo-table');
+    console.log('everything works until showBoard()');
+    let tasksBoard = document.getElementById('todo');
     tasksBoard.innerHTML = '';
     for (let i = 0; i < tasks.length; i++) {
         tasksBoard.innerHTML += templateBoard(i);
@@ -18,183 +19,139 @@ function showBoard() {
 }
 
 function templateBoard(i) {
-    return `
- <div class="new-task" draggable="true" id="new-task-"${i}">
-                        <div class="new-task-inner-elements-left">
-                            <div class="new-task-urgency-color" id="new-task-urgency-color-${tasks[i][urgency - color]}"></div>
-                            <div class="draggable-part" id="draggable-part-${i}">
-                                <img src="img/draggable Kopie 3.png">
-                            </div>
-                            <div class="todo-text">
-                                <div class="todo-title" id="todo-title-${tasks[i]['Titel']}"></div>
-                                    Beispiel
-                                </div>
-                                <div class="todo-deadline" id="todo-deadline-"${tasks[i]}">
-                                07.08.2022
-                                </div>
-                            </div>
-                        </div>
-                        <div class="new-task-inner-elements-right">
-                            <div class="done-button" onclick="markAsDone()">__</div>
-                        </div>
-                    </div>`;
+    return `  
+<div class="new-task" draggable="true" id="${i}" ondragstart="startDragging(${i})" onclick="openTodoInfo(${i})">
+    <div class="new-task-urgency-color" id="new-task-urgency-color-${i}"></div>
+    <div class="new-task-text-elements">
+        <div class="new-task-upper-elements">
+            <div class="new-task-inner-elements-left">
+                <div class="draggable-part" id="draggable-part-${i}">
+                    <img src="img/draggable Kopie 3.png">
+                </div>
+                <div class="todo-variables">
+                    <div class="todo-text">
+                        <div class="todo-title" id="todo-title-${i}"><b>${tasks[i]['Titel']}</b></div>
+                    </div>
+                    <div class="todo-deadline" id="todo-deadline-${i}">${tasks[i]['Date']}</div>
+                </div>
+            </div>    
+            <div class="new-task-inner-elements-right ">
+                <div class="done-button "  onclick="markAsDone(${i}) ">__</div>
+            </div>
+        </div>  
+        <div class="new-task-details hide" id="new-task-details-${i}">
+            <h5>Description:</h5>
+            <p>${tasks[i]['Description']}</p>
+            <h5>Category:</h5>
+            <p>${tasks[i]['Category']}</p>
+            <h5>Urgency:</h5>
+            <p>${tasks[i]['Urgency']}</p>
+        </div>
+    </div>
+</div>
+`;
 }
 
+// drag & drop
 
-function addToBord(i) { //
-    tasks[i].processing_state = 'todo';
-    closeDialog('dialog-bg-backlog'); //überprüfen
-    await updateBacklog();
+let currentDraggedElement;
+
+function startDragging(id) {
+    currentDraggedElement = id;
 }
 
-
-async function updateBacklog() {
-    showBacklog();
-    await saveToBackend();
-}
-
-// Menu functions 
-
-function showMenuButton1() {
-    document.getElementById('menu-point').classList.remove('d-none');
-}
-
-function removeMenuButton1() {
-    document.getElementById('menu-point').classList.add('d-none');
-}
-
-function showMenuButton2() {
-    document.getElementById('menu-point2').classList.remove('d-none');
-}
-
-function removeMenuButton2() {
-    document.getElementById('menu-point2').classList.add('d-none');
-}
-
-function showMenuButton3() {
-    document.getElementById('menu-point3').classList.remove('d-none');
-}
-
-function removeMenuButton3() {
-    document.getElementById('menu-point3').classList.add('d-none');
-}
-
-function showMenuButton4() {
-    document.getElementById('menu-point4').classList.remove('d-none')
-}
-
-function removeMenuButton4() {
-    document.getElementById('menu-point4').classList.add('d-none')
-}
-
-// drag, pull, drop functions for todo's
-
-function dragStart(event) {
-    event.dataTransfer.setData("Text", event.target.id);
-}
-
-function dragEnter(event) {
-    if (event.target.className == "droptarget") {
-        document.getElementById("demo").innerHTML = "Entered the dropzone";
-        event.target.style.border = "3px dotted red";
-    }
-}
-
-function dragLeave(event) {
-    if (event.target.className == "droptarget") {
-        document.getElementById("demo").innerHTML = "Left the dropzone";
-        event.target.style.border = "";
-    }
+function startDragging(i) {
+    currentDraggedElement = i;
 }
 
 function allowDrop(event) {
     event.preventDefault();
 }
 
-function drop(event) {
-    event.preventDefault();
-    let data = event.dataTransfer.getData("Text/plain");
-    event.target.appendChild(document.getElementById('new-task'));
+function MoveTo(processingState) {
+    //tasks[currentDraggedElement] = category; // z.b. Todo mit ID 1: Das Feld 'category' ändert sich zu open oder closed
+    tasks[currentDraggedElement].processing_state = processingState;
+    updateHTML2();
+}
+
+// test
+
+function updateHTML2() {
+
+    document.getElementById('todo').innerHTML = '';
+    document.getElementById('inprogress').innerHTML = '';
+    document.getElementById('testing').innerHTML = '';
+    document.getElementById('done').innerHTML = '';
+
+    for (let i = 0; i < tasks.length; i++) {
+        let element = tasks[i]['processing_state'];
+        if (element == "todo" || element == "inprogress" || element == "testing" || element == "done") {
+            document.getElementById(element).innerHTML += templateBoard(i);
+            adjustColors(i);
+        }
+    }
+}
+
+// Adjusts colors for each task
+
+function adjustColors(i) {
+    let element = tasks[i]['processing_state'];
+
+    if (element == "todo") {
+        document.getElementById('new-task-urgency-color-' + i).classList.add('color-1');
+    }
+    if (element == "inprogress") {
+        document.getElementById('new-task-urgency-color-' + i).classList.add('color-2');
+    }
+    if (element == "testing") {
+        document.getElementById('new-task-urgency-color-' + i).classList.add('color-3');
+    }
+    if (element == "done") {
+        document.getElementById('new-task-urgency-color-' + i).classList.add('color-4');
+    }
 }
 
 // delete already done tasks
 
-function markAsDone1() {
-    let currentTask = document.getElementById('new-task');
+function markAsDone(i) {
+    let currentTask = document.getElementById(i);
     currentTask.remove();
 }
 
-// render Tasks from server
+// includeHTML() Function
 
-async function renderToDos() {
-    includeHTML();
-    await downloadFromServer();
-    await loadFromBackend();
-    selectNavElement();
-    showBacklog();
-}
-
-
-function showBoard() {
-    let tasksBoard = document.getElementById('todo-table');
-    tasksBoard.innerHTML = '';
-    for (let i = 0; i < tasks.length; i++) {
-        tasksBoard.innerHTML += templateBoard(i);
+async function includeHTML() {
+    let includeElements = document.querySelectorAll('[w3-include-html]');
+    for (let i = 0; i < includeElements.length; i++) {
+        const element = includeElements[i];
+        let file = element.getAttribute("w3-include-html"); // "includes/header.html"
+        let resp = await fetch(file);
+        if (resp.ok) {
+            element.innerHTML = await resp.text();
+        } else {
+            element.innerHTML = 'Page not found';
+        }
     }
 }
 
-function templateBoard(i) {
-    return `
- <div class="backlogTasks ${tasks[i]['inputCategory']}" id="backlogTasks-${i}" onclick="openTask(${i}, 'backlog')">
-    <div class="backlogAssigned">//bearbeiten und vergleichen mit Add Task
-        <span class="p">ASSIGNED TO:</span>
-        <div class="avatarPerson">
-            <img class="img" src="../img/${tasks[i]['avatarPicker']}.jfif" alt="">
-            <div class="avatarPersonName">
-                <span>${tasks[i]['avatarPicker']}</span>
-                <span style="color: #6f8bf3f7">${tasks[i]['avatarPicker']}@join.com</span>
-            </div>
-        </div>
-    </div>
-    <div class="backlogCategory">
-        <span class="p">CATEGORY:</span>
-        <span>${tasks[i]['inputCategory']}</span>
-    </div>
-    <div class="backlogDescription">
-        <span class="p">DESCRIPTION:</span>
-        <span>${tasks[i]['inputDescription']}</span>
-    </div>
- </div>
- <div class="new-task" draggable="true" id="new-task-"${i}">
-                        <div class="new-task-inner-elements-left">
-                            <div class="new-task-urgency-color" id="new-task-urgency-color-${tasks[i][urgency - color]}"></div>
-                            <div class="draggable-part" id="draggable-part-${i}">
-                                <img src="img/draggable Kopie 3.png">
-                            </div>
-                            <div class="todo-text">
-                                <div class="todo-title" id="todo-title-${i}">
-                                    Beispiel
-                                </div>
-                                <div class="todo-deadline" id="todo-deadline-"${tasks[i]}">
-                                07.08.2022
-                                </div>
-                            </div>
-                        </div>
-                        <div class="new-task-inner-elements-right">
-                            <div class="done-button" onclick="markAsDone()">__</div>
-                        </div>
-                    </div>`;
-}
+/**
+ * Function to open the info menu for the current task
+ * 
+ * @param {number}
+ */
 
+open = true;
 
-function addToBord(i) { //
-    tasks[i].processing_state = 'todo';
-    closeDialog('dialog-bg-backlog'); //überprüfen
-    await updateBacklog();
-}
-
-
-async function updateBacklog() {
-    showBacklog();
-    await saveToBackend();
+function openTodoInfo(i) {
+    if (open == true) {
+        document.getElementById('new-task-details-' + i).classList.remove('hide');
+        document.getElementById('new-task-urgency-color-' + i).classList.remove('new-task-urgency-color');
+        document.getElementById('new-task-urgency-color-' + i).classList.add('new-task-urgency-color-open-menu');
+        open = false;
+    } else {
+        document.getElementById('new-task-details-' + i).classList.add('hide');
+        document.getElementById('new-task-urgency-color-' + i).classList.remove('new-task-urgency-color-open-menu');
+        document.getElementById('new-task-urgency-color-' + i).classList.add('new-task-urgency-color')
+        open = true;
+    };
 }
