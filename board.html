@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="img/joinlogo.png">
+    <link rel="stylesheet" href="css/board.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <script src="menu.js"></script>
+    <script src="mini_backend.js"></script>
+    <script src="backend.js"></script>
+    <script src="board.js"></script>
+    <script src="includeHTML.js"></script>
+
+    <!-- Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;1,400;1,700&display=swap" rel="stylesheet">
+
+    <title>
+        Board - Join
+    </title>
+</head>
+
+<body onload="init()">
+    <div w3-include-html="menu.html"></div>
+    <div class="main-div">
+        <article class="board-article">
+            <div class="all-tables">
+                <div class="whole-table-position">
+                    <h3 class="headline headline-responsive">TO DO</h3>
+                    <div class="single-table" id="todo" ondrop="MoveTo('todo')" ondragover="allowDrop(event)"></div>
+                </div>
+                <div class="whole-table-position">
+                    <h3 class="headline">IN PROGRESS</h3>
+                    <div class="single-table" id="inprogress" ondrop="MoveTo('inprogress')" ondragover="allowDrop(event)"></div>
+                </div>
+                <div class="whole-table-position">
+                    <h3 class="headline ">TESTING</h3>
+                    <div class="single-table " id="testing" ondrop="MoveTo('testing')" ondragover="allowDrop(event)"></div>
+                </div>
+                <div class="whole-table-position">
+                    <h3 class="headline ">DONE</h3>
+                    <div class="single-table " id="done" ondrop="MoveTo('done')" ondragover="allowDrop(event)"></div>
+                </div>
+            </div>
+    </div>
+    </div>
+</body>
+
+</html>

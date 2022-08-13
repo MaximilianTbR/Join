@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join</title>
+    <link rel="icon" type="image/png" href="img/joinlogo.png">
+    <link rel="stylesheet" href="css/backlog.css">
+
+    <script src="menu.js"></script>
+    <script src="mini_backend.js"></script>
+    <script src="backlog.js"></script>
+    <script src="backend.js"></script>
+
+    <!--<script src="../Join/includeHTML.js"></script> -->
+
+
+</head>
+
+<body onload="init()">
+
+    <div class="dialog-bg d-none" id="dialog-bg-backlog">
+        <div class="dialog" id="dialog-content-backlog"></div>
+    </div>
+
+
+    <div class="div">
+
+        <div w3-include-html="menu.html"></div>
+
+
+        <div class="no">
+
+            <header>
+                <p class="headerName">Backlog</p>
+                <p class="p">Learning Management System Project</p>
+            </header>
+            <div>
+                <div class="tools">
+                    <p>ASSIGNED TO</p>
+                    <p>CATEGORY</p>
+                    <p>DETAILS</p>
+                </div>
+                <div id="tasks"></div>
+            </div>
+
+
+
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>
