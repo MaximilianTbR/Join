@@ -1,0 +1,625 @@
+body {
+    margin: 0px;
+    font-family: PT Sans;
+}
+
+.menu-container {
+    background-color: #1E3190;
+    height: 100vh;
+    width: 15%;
+    z-index: 2;
+    position: absolute;
+    left: 0;
+}
+
+.menu-logo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 135px;
+}
+
+
+/* menu points */
+
+.all-hrefs {
+    width: 100%;
+    height: 45vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.single-href {
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+    width: 100%;
+    margin: 10px 0px;
+    margin-left: 50px;
+}
+
+.single-href:hover {
+    color: lightgray;
+    cursor: pointer;
+    margin-left: 60px;
+}
+
+
+/* menu profile pic & profile name */
+
+.profile-menu {
+    justify-content: space-around;
+    align-items: center;
+}
+
+.profile {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.profile-pic-div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.profile-pic-div img {
+    border: 3px solid rgb(0, 0, 0);
+    padding: 1px;
+    background-color: white;
+    height: 60px;
+    border-radius: 50px;
+    object-fit: cover;
+    cursor: pointer;
+    /*object-position: -15px -2px;*/
+}
+
+.open-menu-close {
+    /**/
+    height: 30px;
+    width: 30px;
+    padding-left: 15px;
+    filter: invert(1);
+    cursor: pointer;
+    margin: 20px;
+}
+
+.img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.username {
+    font-size: 20px;
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.avatarPerson {
+    display: flex;
+}
+
+.avatarPersonName {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.log-out {
+    color: white;
+    opacity: 0.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.log-out:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.div {
+    display: flex;
+}
+
+.no {
+    width: 78%;
+    padding-left: 250px;
+    max-height: 100vh;
+}
+
+.tools {
+    color: #3F4294;
+    font-size: 15px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 250px;
+}
+
+.p {
+    font-size: 15px;
+    color: blue;
+    margin-bottom: 40px;
+}
+
+.headerName {
+    font-size: 30px;
+    font-weight: bolder;
+    margin-block-end: 0px;
+}
+
+.contentContainer {
+    width: 17%;
+}
+
+.legendTask {
+    transform: scale(0.6);
+    position: absolute;
+    left: 200px;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    background: white;
+    border-radius: 10px;
+    box-shadow: #edededd8 0 10px 10px;
+}
+
+.dialog-bg {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dialog {
+    width: 450px;
+    border-radius: 8px;
+}
+
+.dialog-task {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    position: relative;
+    gap: 16px;
+    padding: 16px;
+    border-radius: 8px;
+    background-color: #f4f3fb;
+}
+
+.dialogAllBacklog {
+    width: 75%;
+    height: 100%;
+    /* background-color: #9ad9e6;*/
+    /*width: 90vw;*/
+    background-color: rgb(242, 239, 248);
+    border: solid black 4px;
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0px 0px 25px 10px rgb(255 255 255 / 50%)
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.d-none {
+    display: none;
+}
+
+.edit-dialog {
+    position: relative;
+}
+
+.edit-dialog .add-task-form {
+    margin-top: 0;
+}
+
+.buttonClose {
+    position: absolute;
+    cursor: pointer;
+    font-size: 22px;
+    color: #1E3190;
+}
+
+.xICon {
+    width: 45px;
+    height: 45px;
+    position: absolute;
+    right: 50px;
+    top: 50px;
+    filter: invert(1);
+}
+
+.xICon:hover {
+    opacity: 0.5;
+}
+
+.move {
+    /*  position: absolute;*/
+    cursor: pointer;
+    font-size: 15px;
+    /*color: #1E3190;*/
+}
+
+.icon-menu {
+    display: flex;
+    justify-content: space-around;
+}
+
+.circle-plus {
+    left: 450px;
+    bottom: 20px;
+    color: #fff;
+    background-color: #198754;
+    border-color: #198754;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1.2rem;
+    border-radius: 0.25rem;
+    margin: 0;
+    font-family: inherit;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.square {
+    right: 54px;
+    bottom: 20px;
+}
+
+.trash-can {
+    right: 500px;
+    bottom: 20px;
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1.2rem;
+    border-radius: 0.25rem;
+    margin: 0;
+    font-family: inherit;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.title {
+    font-size: 25px;
+    padding-right: 20px;
+    font-weight: 600;
+    padding-top: 22px;
+}
+
+.titleText {
+    font-size: 20px;
+    padding-left: 65px
+}
+
+.edit-dialog {
+    position: relative;
+}
+
+.backlog-dialog-bg {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.backlogTasks {
+    display: flex;
+    align-items: center;
+    border-left: solid 8px;
+    margin: 16px 0;
+    padding: 8px;
+    border-radius: 8px;
+    background-color: #f4f3fb;
+    cursor: pointer;
+    min-height: 80px;
+}
+
+.backlogTasks:hover {
+    background-color: #e8e5f8;
+}
+
+.backlogAssigned {
+    display: flex;
+    align-items: center;
+    width: 450px;
+}
+
+.assigned-to {
+    margin-bottom: 15px;
+}
+
+.backlogCategory {
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+    word-break: break-all;
+    width: 400px;
+}
+
+.backlogDescription {
+    display: flex;
+    align-items: center;
+    white-space: pre-wrap;
+    overflow: hidden;
+    /* max-width: 280px; */
+    min-height: 48px;
+    width: 400px;
+}
+
+.tasksDialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.column-dialog {
+    display: flex;
+    padding-left: 30px;
+}
+
+.categoryPadding {
+    padding-right: 50px;
+    padding-top: 20px;
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.categoryID {
+    padding-left: 18px;
+    font-size: 17px;
+}
+
+.urgencyID {
+    padding-left: 25px;
+    font-size: 17px;
+}
+
+.dateID {
+    padding-left: 20px;
+    font-size: 17px;
+}
+
+.descriptionTitle {
+    padding-right: 50px;
+    font-weight: 600;
+    font-size: 14px;
+    min-height: 80px;
+}
+
+.description {
+    font-size: 17px;
+    padding-left: 8px;
+    min-width: 175px;
+}
+
+.name {
+    padding-right: 54px;
+    font-size: 17px;
+}
+
+@media (max-width: 1200px) {
+    .menuIcons {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+    }
+    #tasks {
+        max-width: 750px;
+    }
+    .tools {
+        display: none !important;
+    }
+}
+
+@media (max-width: 1000px) {
+    .menuIcons {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+    }
+    .tools {
+        display: none !important;
+    }
+    .no {
+        padding-left: 150px;
+    }
+    .backlogAssigned {
+        width: 525px;
+    }
+    .profile-pic-div img {
+        height: 55px;
+    }
+}
+
+@media (max-width: 940px) {
+    .menu-container {
+        display: none;
+    }
+    #tasks {
+        max-width: 650px;
+    }
+    .backlogDescription {
+        width: 315px;
+    }
+    .backlogCategory {
+        width: 300px;
+    }
+    .headerName {
+        font-size: 27px;
+    }
+    .nö {
+        padding-left: 160px;
+    }
+}
+
+@media (max-width: 820px) {
+    .no {
+        padding-left: 85px;
+    }
+    .avatarPerson {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 650px) {
+    .backlogTasks {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .backlogAssigned {
+        width: 358px;
+        justify-content: center;
+    }
+    .backlogCategory {
+        justify-content: center;
+    }
+    .backlogDescription {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 650px) {
+    .backlogTasks {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .backlogAssigned {
+        width: 358px;
+    }
+    #tasks {
+        width: 400px;
+    }
+    .dialog {
+        width: 400px;
+    }
+}
+
+@media (max-width: 499px) {
+    .no {
+        padding-left: 35px;
+    }
+    #tasks {
+        width: 350px;
+    }
+    .backlogAssigned {
+        width: 282px;
+    }
+    .backlogDescription {
+        width: 282px;
+        padding-left: 20px;
+    }
+    .backlogCategory {
+        width: 282px;
+    }
+    .column-dialog {
+        display: flex;
+        flex-direction: column;
+        /* align-items: center;*/
+    }
+    .urgencyID {
+        padding-left: 0px;
+    }
+    .dateID {
+        padding-left: 0px;
+    }
+    .description {
+        padding-left: 0px;
+    }
+    .categoryID {
+        padding-left: 0px;
+    }
+    .titleText {
+        padding-left: 0px;
+    }
+    .dialog {
+        padding-left: 25px;
+    }
+    .xICon {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media (max-width: 388px) {
+    .no {
+        padding-left: 15px;
+    }
+    #tasks {
+        width: 300px;
+    }
+    .backlogAssigned {
+        width: 282px;
+    }
+    .backlogDescription {
+        width: 282px;
+        padding-left: 0px;
+    }
+    .backlogCategory {
+        width: 282px;
+    }
+    .icon-menu {
+        display: flex;
+        flex-direction: column;
+    }
+    .dialog {
+        padding-left: 25px;
+    }
+    .xICon {
+        width: 30px;
+        height: 30px;
+    }
+}
