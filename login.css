@@ -1,0 +1,201 @@
+body {
+    margin: 0px;
+    font-family: 'PT Sans', sans-serif;
+}
+
+.background {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgb(30 49 144 / 85%);
+}
+
+.img-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+
+form {
+    width: 100%;
+}
+
+.header {
+    font-size: 25px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    color: white;
+    font-style: bold;
+}
+
+.login-menu-div {
+    margin-top: 5%;
+    height: 400px;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.login-menu {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login-menu h1 {
+    font-size: 20px;
+    margin-top: 30px;
+    color: white;
+    margin-bottom: 30px;
+}
+
+.input-div {
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-bottom: 30px;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: fit-content;
+}
+
+.input-div input {
+    padding: 10px 10px;
+    line-height: 28px;
+    border: 1px solid gray;
+    outline: none;
+}
+
+.input-div input:focus {
+    border: 1px solid black;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.input-header {
+    display: flex;
+    justify-content: start;
+    color: gray;
+    font-size: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.checkbox-div {
+    color: white;
+    display: flex;
+    justify-content: center !important;
+    width: 100%;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.checkbox-div input {
+    margin-right: 20px;
+    border: none;
+    border-radius: 5px;
+    outline: none !important;
+    border-color: white;
+    height: 15px;
+    width: 15px;
+}
+
+.checkbox-div span {
+    font-size: 16px;
+    color: gray;
+    margin-left: -10px;
+}
+
+.button-div {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-btn {
+    width: 100%;
+    margin-top: 10px;
+    margin-left: 100px;
+    margin-right: 100px;
+    height: 40px;
+    background-color: rgb(238, 96, 2);
+    font-size: 15px;
+    border: none;
+    color: white;
+    border-radius: 30px;
+    font-weight: bold;
+}
+
+
+/* symbols on the bottom of the page */
+
+.alltasks {
+    width: 100vw;
+    height: 100px;
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.onetask {
+    margin-right: 10px;
+    width: 200px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.symbol {
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.text {
+    padding-left: 10px;
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+@media (max-width: 1200px) {
+    .alltasks {
+        display: none;
+    }
+}
+
+@media (max-width: 500px) {
+    .login-menu-div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 50vh;
+        position: absolute;
+        top: 25%;
+        box-shadow: 0;
+    }
+    .header {
+        display: none;
+    }
+    .img-header {
+        margin-top: 85px;
+    }
+}
